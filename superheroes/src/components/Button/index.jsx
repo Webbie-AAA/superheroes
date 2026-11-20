@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function Button() {
+export default function Button(hero) {
+
+  
+  
+
+
+
   return (
-    <div>Button</div>
+    <div>
+      <form>
+        <button type='submit'>Add to Collection</button>
+      </form>
+    </div>
   )
 }

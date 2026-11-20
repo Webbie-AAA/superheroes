@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Button from '../Button';
+import ReadStory from '../ReadStory';
 
 export default function SearchForm() {
   const [inputValue, setInputValue] = useState('');
@@ -49,6 +51,8 @@ export default function SearchForm() {
         <div key={hero.id}>
           <h3>{hero.name}</h3>
           <img src={hero.images.sm} alt={hero.name} />
+          <Button hero = {hero} />
+          <ReadStory/>
         </div>
       ))}
     </>
