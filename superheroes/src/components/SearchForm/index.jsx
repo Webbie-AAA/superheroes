@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
+import Filter from '../Filter'
 
 export default function SearchForm() {
-  const [inputValue, setInputValue] = useState('');
-  const [searchString, setSearchString] = useState('');
-  const [heroData, setHeroData] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+    const [searchString, setSearchString] = useState('');
+    const [heroData, setHeroData] = useState([]);
+    const [gender, setGender] = useState('')
+
 
   useEffect(() => {
     async function fetchHeroes() {
@@ -18,6 +21,8 @@ export default function SearchForm() {
     fetchHeroes();
   }, []);
 
+    console.log(heroData)
+
   function handleInput(e) {
     setInputValue(e.target.value);
   }
@@ -28,10 +33,13 @@ export default function SearchForm() {
     setInputValue('');
   }
 
-  const SearchedHeroes = heroData.filter(hero =>
-    hero.name.toLowerCase().includes(searchString.toLowerCase())
-  );
+    let searchedHeroes = heroData
+        .filter(hero => hero.name.toLowerCase().includes(searchString.toLocaleLowerCase()))
 
+    if (gender !== 'Any'){
+            searchedHeroes.filter(hero => hero.appearance.gender === `${gender}`)}
+    
+    console.log(gender)
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -45,12 +53,22 @@ export default function SearchForm() {
         <button type="submit">Search</button>
       </form>
 
-      {SearchedHeroes.map(hero => (
+      <Filter
+   
+      gender = {gender}
+      setGender = {setGender}
+  
+      />
+        
+
+      {searchedHeroes.map(hero => (
         <div key={hero.id}>
-          <h3>{hero.name}</h3>
+          <h3>{hero.name} ({hero.appearance.gender })</h3>
           <img src={hero.images.sm} alt={hero.name} />
         </div>
-      ))}
+      ))}. 
     </>
   );
 }
+
+//last map of searchHeroes to be reused in useParams for the HeroInfoDashboard
