@@ -34,12 +34,17 @@ export default function SearchForm() {
     setSearchString(inputValue);
     setInputValue('');
   }
+  console.log(gender)
 
-    let searchedHeroes = heroData
-        .filter(hero => hero.name.toLowerCase().includes(searchString.toLocaleLowerCase()))
+  let searchedHeroes = 
 
-    if (gender !== 'Any'){
-            searchedHeroes.filter(hero => hero.appearance.gender === `${gender}`)}
+    gender == 'All' ?  heroData.filter(hero => hero.name.toLowerCase().includes(searchString.toLocaleLowerCase()))
+    : heroData
+        .filter(hero => hero.name.toLocaleLowerCase().includes(searchString.toLocaleLowerCase()))
+        .filter(hero => hero.appearance.gender == gender)
+            
+    
+        
     
     console.log(gender)
   return (
