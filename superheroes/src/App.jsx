@@ -18,6 +18,7 @@ function App() {
             <Route index element={<pages.Home/>}/>
             <Route path='/search/:id' element={<pages.SearchHero/>}/>
             <Route path='/collection' element={<pages.Collection/>}/>
+            <Route path='/contact-us' element={<pages.ContactUs/>}/>
             <Route path='*' element={<pages.Notfound/>}/>
           </Route>
 

@@ -23,7 +23,7 @@ export default function SearchForm() {
     fetchHeroes();
   }, []);
 
-    console.log(heroData)
+    
 
   function handleInput(e) {
     setInputValue(e.target.value);
@@ -34,7 +34,8 @@ export default function SearchForm() {
     setSearchString(inputValue);
     setInputValue('');
   }
-  console.log(gender)
+ 
+  
 
   let searchedHeroes = 
 
@@ -43,10 +44,7 @@ export default function SearchForm() {
         .filter(hero => hero.name.toLocaleLowerCase().includes(searchString.toLocaleLowerCase()))
         .filter(hero => hero.appearance.gender == gender)
             
-    
-        
-    
-    console.log(gender)
+    console.log(searchedHeroes.length)
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -66,6 +64,8 @@ export default function SearchForm() {
       setGender = {setGender}
   
       />
+
+      
         
 
       {searchedHeroes.map(hero => (
