@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Button from '../Button';
 import ReadStory from '../ReadStory';
+import Filter from '../Filter';
 
 export default function SearchForm() {
     const [inputValue, setInputValue] = useState('');
