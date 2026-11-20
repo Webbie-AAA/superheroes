@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
+import { useFavourite } from '../Contexts';
 
-export default function Button(hero) {
+export default function Button({ hero }) {
+  const { favHero, setFavHero } = useFavourite();
 
-  
-  
+  const clickLike = favHero.some(item => item.id === hero.id);
 
-
+  function addToCollection() {
+    if (clickLike) {
+      setFavHero(favHero.filter(item => item.id !== hero.id));
+    } else {
+      setFavHero([...favHero, hero]);
+    }
+  }
 
   return (
     <div>
-      <form>
-        <button type='submit'>Add to Collection</button>
-      </form>
+      <button type="button" onClick={addToCollection}>
+        {clickLike ? "Remove from collection" : "Add to Collection"}
+      </button>
     </div>
-  )
+  );
 }
