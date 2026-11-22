@@ -7,7 +7,7 @@ export default function SearchForm() {
     const [inputValue, setInputValue] = useState('');
     const [searchString, setSearchString] = useState('');
     const [heroData, setHeroData] = useState([]);
-    const [gender, setGender] = useState('')
+    const [gender, setGender] = useState('All')
 
 
   useEffect(() => {
@@ -44,7 +44,6 @@ export default function SearchForm() {
         .filter(hero => hero.name.toLocaleLowerCase().includes(searchString.toLocaleLowerCase()))
         .filter(hero => hero.appearance.gender == gender)
             
-    console.log(searchedHeroes.length)
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -69,7 +68,7 @@ export default function SearchForm() {
         
 
       {searchedHeroes.map(hero => (
-        <div key={hero.id}>
+        <div key={hero.id} className='show-card'>
           <h3>{hero.name} ({hero.appearance.gender })</h3>
           <img src={hero.images.sm} alt={hero.name} />
           <Button hero = {hero} />

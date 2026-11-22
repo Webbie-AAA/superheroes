@@ -10,8 +10,11 @@ export default function Button({ hero }) {
       setFavHero(favHero.filter(item => item.id !== hero.id));
     } else {
       setFavHero([...favHero, hero]);
+      console.log(favHero)
     }
   }
+
+ 
 
   return (
     <div>

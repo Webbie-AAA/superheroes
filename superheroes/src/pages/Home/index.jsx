@@ -4,7 +4,10 @@ import {SearchForm} from '../../components'
 export default function Home() {
   return (
     <>
-     <SearchForm/>
+    <div>
+      <SearchForm className='show-list'/>
+    </div>
+     
     </>
     
   )
